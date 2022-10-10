@@ -13,7 +13,7 @@ export default function Card({data}) {
     useEffect(() => {
       getData();
     }, []);
-    console.log(newdata);
+    const { buyback, buybacks,  } = newdata || {};
   return (
     <section className="w-11/12 lg:max-w-[88rem] flex justify-center items-center mt-24">
       <div className="w-full  flex flex-col md:flex-wrap md:flex-row justify-center md:justify-between gap-y-6">

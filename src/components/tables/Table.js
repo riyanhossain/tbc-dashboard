@@ -45,7 +45,6 @@ export default function Table({ bets }) {
               'Pick of the day': pick,
               'Net Return': netReturn,
             } = bet;
-            console.log(bet);
             return (
               <tr
                 className="w-full flex justify-between items-center px-3  p-2 rounded-tr-lg bg-primary hover:bg-table"
