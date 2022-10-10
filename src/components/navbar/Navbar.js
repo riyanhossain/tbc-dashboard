@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function Navbar() {
   return (
-    <nav className="w-screen h-16 bg-primary shadow shadow-inherit flex items-center">
+    <nav className="w-screen h-16 bg-primary shadow shadow-inherit flex items-center fixed">
       <div className="mx-auto w-11/12 lg:max-w-[88rem] flex justify-between items-center">
         <h1 className="text-2xl text-white font-bold">Navbar</h1>
         <div className='flex gap-x-2'>

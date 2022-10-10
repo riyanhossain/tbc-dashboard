@@ -6,7 +6,8 @@ module.exports = {
       colors: {
         primary: '#111923',
         secondary: '#1F2937',
-        accent: '#10B981',
+        table: '#202A39',
+        'table-text': '#AEBCD3',
       },
       fontFamily: {
         DMSans: ['DM Sans', 'sans-serif'],
