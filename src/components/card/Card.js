@@ -1,8 +1,21 @@
-import React from 'react';
-// #00A24C
-export default function Card() {
+import React, { useEffect } from 'react';
+import axios from 'axios';
+import Chart1 from '../charts/Chart1';
+
+
+export default function Card({data}) {
+  const { stats } = data || {};
+    const [newdata, setNewData] = React.useState([]);
+    const getData = async () => {
+      const res = await axios.get('https://api.betcoinscan.com/buyback.php');
+      setNewData(res.data);
+    };
+    useEffect(() => {
+      getData();
+    }, []);
+    console.log(newdata);
   return (
-    <section className="w-11/12 lg:max-w-[88rem] flex justify-center items-center mt-6">
+    <section className="w-11/12 lg:max-w-[88rem] flex justify-center items-center mt-24">
       <div className="w-full  flex flex-col md:flex-wrap md:flex-row justify-center md:justify-between gap-y-6">
         {/* card 1 */}
         <div className="w-full md:w-[48%] lg:w-[32%] h-52 px-5 py-3 flex flex-col justify-between bg-[#00A24C] rounded">
@@ -95,20 +108,20 @@ export default function Card() {
             <h1 className="text-lg font-medium font-DMSans text-white">Win Rate</h1>
           </div>
           <div className="flex justify-center">
-            <h1 className="text-5xl font-bold font-DMSans text-[#00A24C]">51.72%</h1>
+            <h1 className="text-5xl font-bold font-DMSans text-[#00A24C]">{stats?.winrate}%</h1>
           </div>
           <div className="flex justify-between">
             <div>
               <h1 className="text-sm font-medium font-DMSans text-white">Won</h1>
-              <h1 className="text-sm font-medium font-DMSans text-[#00A24C] ">15</h1>
+              <h1 className="text-sm font-medium font-DMSans text-[#00A24C] ">{stats?.won}</h1>
             </div>
             <div>
               <h1 className="text-sm font-medium font-DMSans text-white">Push</h1>
-              <h1 className="text-sm font-medium font-DMSans text-slate-300 text-center">1</h1>
+              <h1 className="text-sm font-medium font-DMSans text-slate-300 text-center">{stats?.push}</h1>
             </div>
             <div>
               <h1 className="text-sm font-medium font-DMSans text-white">Lost</h1>
-              <h1 className="text-sm font-medium font-DMSans text-end text-red-500">14</h1>
+              <h1 className="text-sm font-medium font-DMSans text-end text-red-500">{stats?.lost}</h1>
             </div>
           </div>
         </div>
@@ -118,23 +131,25 @@ export default function Card() {
             <h1 className="text-lg font-medium font-DMSans text-white">Net Return</h1>
           </div>
           <div className="flex justify-center">
-            <h1 className="text-5xl font-bold font-DMSans text-[#00A24C]">$2,150</h1>
+            <h1 className="text-5xl font-bold font-DMSans text-[#00A24C]">${stats?.netresult}</h1>
           </div>
           <div className="flex justify-between">
             <div>
               <h1 className="text-sm font-medium font-DMSans text-white">Won</h1>
-              <h1 className="text-sm font-medium font-DMSans text-[#00A24C] ">$43,550</h1>
+              <h1 className="text-sm font-medium font-DMSans text-[#00A24C] ">${stats?.profit}</h1>
             </div>
             <div>
               <h1 className="text-sm font-medium font-DMSans text-white">Push</h1>
-              <h1 className="text-sm font-medium font-DMSans text-slate-300 text-center">1</h1>
+              <h1 className="text-sm font-medium font-DMSans text-slate-300 text-center">{stats?.push}</h1>
             </div>
             <div>
               <h1 className="text-sm font-medium font-DMSans text-white text-end">Loss</h1>
-              <h1 className="text-sm font-medium font-DMSans text-end text-red-500">-$41,400</h1>
+              <h1 className="text-sm font-medium font-DMSans text-end text-red-500">-${stats?.loss}</h1>
             </div>
           </div>
         </div>
+        {/* chart 1 */}
+        <Chart1 />
       </div>
     </section>
   );
