@@ -51,7 +51,7 @@ export default function Table({ bets }) {
                 key={index}
               >
                 <td className="w-[6rem] lg:basis-2/12 lg:px-4 text-sm text-table-text text-start font-DMSans ">
-                  {date.split('.').join('/')} {moment(new Date(TimestampUTC * 1000)).format('LT')}
+                  {date?.split('.').join('/')} {moment(new Date(TimestampUTC * 1000)).format('LT')}
                 </td>
                 <td className="w-[5rem] lg:basis-1/12  lg:px-4 text-sm text-table-text text-start font-DMSans">
                   {League}

@@ -1,7 +1,8 @@
-import axios from 'axios';
+// import axios from 'axios';
 import React from 'react';
-import { useEffect, useState } from 'react';
+// import { useEffect, useState } from 'react';
 import './App.css';
+import { dataJSON } from './data/data';
 
 import Spinner from './components/loader/Spinner';
 import Navbar from './components/navbar/Navbar';
@@ -10,15 +11,15 @@ import Tables from './components/tables/Tables';
 const Card = React.lazy(() => import('./components/card/Card'));
 
 function App() {
-  const [data, setData] = useState([]);
-  const { bets } = data;
-  const getData = async () => {
-    const res = await axios.get('https://api.betcoinscan.com');
-    setData(res.data);
-  };
-  useEffect(() => {
-    getData();
-  }, []);
+  // const [data, setData] = useState([]);
+  const { bets } = dataJSON;
+  // const getData = async () => {
+  //   const res = await axios.get('https://api.betcoinscan.com');
+  //   setData(res.data);
+  // };
+  // useEffect(() => {
+  //   getData();
+  // }, []);
 
   return (
     <React.Suspense fallback={<Spinner />}>
@@ -27,7 +28,7 @@ function App() {
       </React.Suspense>
       <div className="w-screen flex flex-col items-center gap-y-4">
         <React.Suspense fallback={<Spinner />}>
-          <Card data={data} />
+          <Card data={dataJSON} />
         </React.Suspense>
         <div className="w-11/12 lg:max-w-[88rem] flex justify-start items-center">
           <h1 className="text-white font-semibold font-DMSans text-xl">History</h1>

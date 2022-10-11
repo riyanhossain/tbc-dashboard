@@ -1,18 +1,19 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Table from './Table';
-import axios from 'axios';
+// import axios from 'axios';
+import { communityJSON } from '../../data/data';
 
 export default function Tables({ bets = {} }) {
   const buttuons = ['Pick of the Day', 'Community Bets'];
   const [active, setActive] = React.useState(buttuons[0]);
-  const [data, setData] = React.useState([]);
-    const getData = async () => {
-      const res = await axios.get('https://api.betcoinscan.com/community.php');
-      setData(res.data?.bets);
-    };
-    useEffect(() => {
-      getData();
-    }, []);
+  // const [data, setData] = React.useState([]);
+  //   const getData = async () => {
+  //     const res = await axios.get('https://api.betcoinscan.com/community.php');
+  //     setData(res.data?.bets);
+  //   };
+  //   useEffect(() => {
+  //     getData();
+  //   }, []);
   return (
     <section className="w-11/12 lg:max-w-[88rem] flex flex-col justify-start items-start">
       <div className="flex">
@@ -30,7 +31,7 @@ export default function Tables({ bets = {} }) {
           );
         })}
       </div>
-      <Table bets={active === 'Pick of the Day' ? bets : data} />
+      <Table bets={active === 'Pick of the Day' ? bets : communityJSON?.bets} />
     </section>
   );
 }

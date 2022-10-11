@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import axios from 'axios';
+import React from 'react';
+// import axios from 'axios';
 import Chart1 from '../charts/Chart1';
 import Chart2 from '../charts/Chart2';
 import Chart3 from '../charts/Chart3';
@@ -7,18 +7,19 @@ import VaultCard from './VaultCard';
 import MarketCapCard from './MarketCapCard';
 import HoldingCard from './HoldingCard';
 import BuybackCard from './BuybackCard';
+import { buybackJSON } from '../../data/data';
 
 export default function Card({ data }) {
   const { stats, winrate, netreturn } = data || {};
-  const [newdata, setNewData] = React.useState([]);
-  const getData = async () => {
-    const res = await axios.get('https://api.betcoinscan.com/buyback.php');
-    setNewData(res.data);
-  };
-  useEffect(() => {
-    getData();
-  }, []);
-  const { buybacks } = newdata || {};
+  // const [newdata, setNewData] = React.useState([]);
+  // const getData = async () => {
+  //   const res = await axios.get('https://api.betcoinscan.com/buyback.php');
+  //   setNewData(res.data);
+  // };
+  // useEffect(() => {
+  //   getData();
+  // }, []);
+  const { buybacks } = buybackJSON || {};
   return (
     <section className="w-11/12 lg:max-w-[88rem] flex justify-center items-center mt-24">
       <div className="w-full  flex flex-col md:flex-wrap md:flex-row justify-center md:justify-between gap-y-6">
