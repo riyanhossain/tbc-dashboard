@@ -2,8 +2,8 @@ import moment from 'moment';
 import React from 'react';
 import Chart from 'react-apexcharts';
 
-export default function Chart1({ buybacks }) {
-  const { labels, values } = buybacks || {};
+export default function Chart2({ winrate }) {
+  const { labels, values } = winrate || {};
   const newLabels = labels?.map((date) => moment(date).format('MMM DD'));
 
   const options = {
@@ -20,7 +20,7 @@ export default function Chart1({ buybacks }) {
     },
     series: [
       {
-        name: "buyback",
+        name: 'Winrate',
         data: values || [],
       },
     ],
@@ -44,7 +44,7 @@ export default function Chart1({ buybacks }) {
       labels: {
         style: {
           colors: '#AEBCD3',
-          fontSize: '1px',
+          fontSize: '0px',
           fontFamily: 'DM Sans',
           fontWeight: 400,
           cssClass: 'apexcharts-xaxis-label',
@@ -54,7 +54,7 @@ export default function Chart1({ buybacks }) {
         enabled: true,
         style: {
           backgroundColor: '#1F2937',
-          color: "white"
+          color: 'white',
         },
       },
     },
@@ -83,7 +83,7 @@ export default function Chart1({ buybacks }) {
   return (
     <div className="w-full md:w-[48%] lg:w-[32%]  h-52 px-5 py-3 flex flex-col justify-between bg-primary rounded shadow shadow-inherit">
       <div>
-        <h1 className="text-lg font-medium font-DMSans text-white">Buyback per Day</h1>
+        <h1 className="text-lg font-medium font-DMSans text-white">Win Rate per Day</h1>
       </div>
       <div className="flex justify-center w-full">
         <Chart options={options} series={options.series} type={'area'} width="380" height={160} />
