@@ -85,7 +85,7 @@ export default function Chart2({ winrate }) {
       <div>
         <h1 className="text-lg font-medium font-DMSans text-white">Win Rate per Day</h1>
       </div>
-      <div className="flex justify-center w-full">
+      <div className="flex justify-center w-full overflow-hidden">
         <Chart options={options} series={options.series} type={'area'} width="380" height={160} />
       </div>
     </div>
